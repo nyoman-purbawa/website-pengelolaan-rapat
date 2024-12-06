@@ -1,0 +1,14 @@
+Options -Indexes
+
+<IfModule mod_rewrite.c>
+    RewriteEngine On
+    RewriteBase /views/admin/
+
+    # Tidak izinkan akses langsung ke folder atau file lain
+    RewriteCond %{REQUEST_URI} !^index\.php$
+    RewriteRule ^(.*)$ index.php [L]
+
+    # Mengarahkan pengguna ke halaman kustom saat not found (404)
+    ErrorDocument 404 /views/admin/not_found.php
+
+</IfModule>
